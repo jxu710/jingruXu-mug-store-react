@@ -294,4 +294,23 @@ nav ul button{
     margin-left: 30%;
   }
   }
+
+
+@media(max-width:450px){
+  img{
+    width: 300px;
+    height: 200px;
+  }
+
+  figcaption{
+
+    top: -190px;
+    font-size: 1.2rem;
+  }
+  
+  .itemContainer P {
+    bottom: -14px;
+    z-index: 15;
+  }
+  }
   

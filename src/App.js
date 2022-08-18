@@ -14,8 +14,6 @@ function App() {
   const [openCart, setCart] = useState(false);
   const [userCart, setUserCart] = useState ([]);
 
-  const [filteredItems,setFilteredItems] = useState([])
-  // const [userChoice, setUserChoice] = useState('placeholder')
 
   // when page loads, call useEffect to connect to firebase and load data from the "inventory" object 
   useEffect(()=>{
@@ -69,15 +67,6 @@ function App() {
     })
   },[])
 
-  // event listener pass to header component, filter items based on value "coffee" or "beer"
-  const handleUserChoice = (e)=>{
-    const ItemsFilter = pictures.filter((item)=>{
-      return item.value === e.target.value
-    })
-    setFilteredItems(ItemsFilter)
-    
-  }
-  
 
   // function when user click add to cart button
   const add = function(userSelectItem){
@@ -134,11 +123,18 @@ function App() {
     <div className="App">
 
 
-      <Header handleCart={handleCart} totalCount ={getTotalCount(userCart)} pictures={pictures} handleUserChoice={handleUserChoice}/>
+      <Header handleCart={handleCart} 
+      totalCount ={getTotalCount(userCart)} 
+      pictures={pictures} 
+      />
 
-      <DisplayInventory  pictures = {filteredItems.length !== 0 ? filteredItems : pictures} add={add}/>
+      <DisplayInventory  pictures = {pictures} add={add}/>
 
-      <DisplayCart userCart = {userCart} openCart={openCart} minus={minus} totalAmountCalculator={totalAmountCalculator} handleCart={handleCart} />
+      <DisplayCart userCart = {userCart} 
+      openCart={openCart} minus={minus} 
+      totalAmountCalculator={totalAmountCalculator} 
+      handleCart={handleCart} 
+      />
 
       <Footer />
 
